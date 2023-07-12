@@ -1,4 +1,4 @@
-# CP101
+# All About CP
 This is an open source book all about competitive programming
 
 # Development
