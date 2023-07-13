@@ -9,7 +9,7 @@ This book is publicly developed on GitHub. If you find anything confusing, or yo
 # Bit Manipulation
 ## XOR
 ### How to visualize XOR
-#### Method-1: Non-equivalence Operator
+#### Method-1: Non-equivalence Operator {-}
 $A\oplus B$ is $true$ if truth value of $A$ and $B$ are different
 ```{.cpp .numberLines}
 bool xor(bool a, bool b) {
@@ -18,7 +18,7 @@ bool xor(bool a, bool b) {
   return false;
 }
 ```
-#### Method-2: Programmable Inverter
+#### Method-2: Programmable Inverter {-}
 Think of XOR as a machine with an on/off button, that takes one bit as input and one bit as output. If the machine is on, the ouput bit will be inverse of input bit, otherwise, the output bit will be the same as input bit.\
 In $A\oplus B$, one bit decides if the other should be flipped.
 ```{.cpp .numberLines}
