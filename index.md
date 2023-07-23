@@ -13,6 +13,15 @@ cin.tie(0)->sync_with_stdio(0);
 ```
 
 # Bit Manipulation
+## Binary literal in C++
+You can represent binary numbers in C++ by using the `0b` prefix.\
+For example: $13$ in binary is `0b1101`.
+```{.cpp .numberLines}
+assert(13 == 0b1101);
+```
+## Signed and Unsigned Integers
+Positive integers (both signed and unsigned) are just represented with their binary digits, and negative signed numbers (which can be positive and negative) are usually represented with the Two's complement ^[[cp-algorithms - bit manipulation](https://cp-algorithms.com/algebra/bit-manipulation.html)]
+
 ## XOR
 ### How to visualize XOR
 #### Method-1: Non-equivalence Operator {-}
