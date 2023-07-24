@@ -15,7 +15,7 @@ cin.tie(0)->sync_with_stdio(0);
 # Bit Manipulation
 ## Binary Literal in C++
 You can represent binary numbers in C++ by using the `0b` prefix.\
-For example: $13$ in binary is `0b1101`.
+For example: 13 in binary is `0b1101`.
 ```{.cpp .numberLines}
 assert(13 == 0b1101);
 ```
@@ -39,7 +39,7 @@ index:      ... 3 2 1 0
 ## XOR
 ### How to Visualize XOR
 #### Method-1: Non-equivalence Operator {-}
-$A\oplus B$ is $true$ if truth value of $A$ and $B$ are different.\
+$A\oplus B$ is `true` if truth value of $A$ and $B$ are different.\
 The following function uses this algorithm:
 ```{.cpp .numberLines}
 bool xor(bool a, bool b) {
