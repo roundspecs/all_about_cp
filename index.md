@@ -21,6 +21,12 @@ assert(13 == 0b1101);
 ```
 ## Signed and Unsigned Integers
 Positive integers (both signed and unsigned) are just represented with their binary digits, and negative signed numbers (which can be positive and negative) are usually represented with the Two's complement ^[[cp-algorithms - bit manipulation](https://cp-algorithms.com/algebra/bit-manipulation.html)]
+```{.cpp .numberLines}
+cout<<bitset<3>(5)<<"\n";
+// Output: 101
+cout<<bitset<32>(-1)<<"\n";
+// Output: 11111111111111111111111111111111
+```
 
 ## XOR
 ### How to visualize XOR
