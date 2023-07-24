@@ -29,6 +29,13 @@ cout<<bitset<32>(-1)<<"\n";
 // Output: 11111111111111111111111111111111
 ```
 
+## Index of Bit
+Bits in a bit string are numbered from right to left, starting with 0.
+```
+bit string: 1 0 1 1 0 1
+index:      ... 3 2 1 0
+```
+
 ## XOR
 ### How to Visualize XOR
 #### Method-1: Non-equivalence Operator {-}
