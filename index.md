@@ -159,7 +159,7 @@ int clearRange(int n, int start, int stop) {
 
 ### Flip Range of bits
 ```{.cpp .numberLines}
-int setRange(int n, int start, int stop) {
+int flipRange(int n, int start, int stop) {
   int length = stop-start;
   int mask = (1<<length);
   mask = mask-1;
