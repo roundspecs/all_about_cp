@@ -4,7 +4,7 @@ toc-title: Table of Content
 ---
 
 # Development
-This book is publicly developed on [GitHub](github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
+This book is publicly developed on [GitHub](https://github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
 
 # FastIO
 ## The Magic Line
