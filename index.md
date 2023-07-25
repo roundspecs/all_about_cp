@@ -4,7 +4,7 @@ toc-title: Table of Content
 ---
 
 # Development
-This book is publicly developed on GitHub. If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
+This book is publicly developed on [GitHub](github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
 
 # FastIO
 ## The Magic Line
@@ -61,6 +61,13 @@ bool xor(bool a, bool b) {
 }
 ```
 
+## Visualizing n-1
+When we substract 1 from a number, the rightmost set bit becomes unset and all the bits to its right becomes set
+```
+n   = xxxx10000
+n-1 = xxxx01111
+```
+
 ## Common Bit Operations and Checks
 ### Parity Check
 If `n` is an integer(positive or negative) then `n&1` represent parity of `n`. It is similar to `n%2` but better, because unlike `n%2`, `n&1` works for both positive and negative numbers.
@@ -84,4 +91,79 @@ assert((5<<2) == 20);
 `x>>y` is equivalent to $\lfloor \frac{x}{2^y} \rfloor$
 ```{.cpp .numberLines}
 assert((10>>2) == 2);
+```
+
+### Set i-th Bit
+`n|(1<<i)`
+
+### Clear i-th Bit
+`n&~(1<<i)`
+
+### Flip i-th Bit
+We already discussed that, XOR works as a programmable inverter.
+`n^(1<<i)`
+
+### Check i-th Bit
+`n&(1<<x)`
+`(n>>x)&1`
+
+### Unset Rightmost Set Bit
+`n&(n-1)`
+
+### Check if Power of Two
+`n` is power of two, if there is only one set bit. To check if there is only one set bit, unset the last set bit, and check if it becomes zero or greater. If it becomes zero its a power of two
+```{.cpp .numberLines}
+bool isPowerOf2(int n) {
+  return (n&(n-1))>0;
+}
+```
+
+### Count Set Bits: Brian Kernighan's Algorithm
+The idea is to count how many times we can unset the rightmost set bit, until we reach 0
+```{.cpp .numberLines}
+int countSetBits(int n) {
+  int cnt=0;
+  while(n)
+    n=n&(n-1), cnt++;
+  return cnt;
+}
+```
+
+### Set Range of bits
+The concept is similar to setting i-th bit, except we will use a different bit mask.\
+`1<<i` is i 0s after one 1\
+`(1<<i)-1` is i 1s at the end, and rest are 0s\
+Now we can leftshift these 1s to fit into the range
+```{.cpp .numberLines}
+int setRange(int n, int start, int stop) {
+  int length = stop-start;
+  int mask = (1<<length);
+  mask = mask-1;
+  mask = mask<<start;
+  return n|mask;
+}
+```
+
+### Clear Range of bits
+```{.cpp .numberLines}
+int clearRange(int n, int start, int stop) {
+  int length = stop-start;
+  int mask = (1<<length);
+  mask = mask-1;
+  mask = mask<<start;
+  mask = ~mask;
+  return n&mask;
+}
+```
+
+
+### Flip Range of bits
+```{.cpp .numberLines}
+int setRange(int n, int start, int stop) {
+  int length = stop-start;
+  int mask = (1<<length);
+  mask = mask-1;
+  mask = mask<<start;
+  return n^mask;
+}
 ```
