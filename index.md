@@ -107,6 +107,7 @@ n=-5;
 assert((n&1) == 1);
 assert((n%2) == -1);
 ```
+In general, `x % (1<<k)` is equivalent to `x & (1<<k)-1`
 
 ### Left Shift as $\times 2$
 `x<<y` is equivalent to $x\times 2^y$
