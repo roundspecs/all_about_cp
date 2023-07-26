@@ -48,7 +48,7 @@ In this text, i-th bit means bit with index i.
 ## XOR
 ### How to Visualize XOR
 #### Method-1: Non-equivalence Operator {-}
-$A\oplus B$ is `true` if truth value of $A$ and $B$ are different.\
+`A^B` is `true` if truth value of `A` and `B` are different.\
 The following function uses this algorithm:
 ```{.cpp .numberLines}
 bool xor(bool a, bool b) {
@@ -60,7 +60,7 @@ bool xor(bool a, bool b) {
 
 #### Method-2: Programmable Inverter {-}
 Think of XOR as a machine with an on/off button, that takes one bit as input and one bit as output. If the machine is on, the ouput bit will be inverse of input bit, otherwise, the output bit will be the same as input bit.\
-In $A\oplus B$, one bit decides if the other should be flipped.\
+In `A^B`, one bit decides if the other should be flipped.\
 The following function uses this algorithm:
 ```{.cpp .numberLines}
 bool xor(bool a, bool b) {
@@ -74,18 +74,18 @@ bool xor(bool a, bool b) {
 ### AND
 | Operation | Meaning |
 |-----------|---------|
-| $& 1$     | same    |
-| $& 0$     | 0       |
+| `& 1`     | same    |
+| `& 0`     | 0       |
 ### OR
 | Operation | Meaning |
 |-----------|---------|
-| $| 1$     | 1       |
-| $| 0$     | same    |
+| `| 1`     | 1       |
+| `| 0`     | same    |
 ### XOR
 | Operation   | Meaning |
 |-------------|---------|
-| $\oplus 1$  | flip    |
-| $\oplus 0$  | same    |
+| `^ 1`       | flip    |
+| `^ 0`       | same    |
 
 ## Visualizing n-1
 When we substract 1 from a number, the rightmost set bit becomes unset and all the bits to its right becomes set
@@ -141,9 +141,10 @@ We already discussed that, XOR works as a programmable inverter.
 `n` is power of two, if there is only one set bit. To check if there is only one set bit, unset the last set bit, and check if it becomes zero or greater. If it becomes zero its a power of two
 ```{.cpp .numberLines}
 bool isPowerOf2(int n) {
-  return (n&(n-1))>0;
+  return n!=0 && (n&(n-1))>0;
 }
 ```
+**Corner case:** 0
 
 ### Count Set Bits: Brian Kernighan's Algorithm
 The idea is to count how many times we can unset the rightmost set bit, until we reach 0
