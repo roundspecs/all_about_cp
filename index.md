@@ -43,7 +43,17 @@ In this text, i-th bit means bit with index i.
 |**Set bit**| Make the bit 1|
 |**Unset/Clear bit**| Make the bit 0|
 |**Flip bit**| Make the bit opposite|
-|**Lower bit/**<br> **Higher bit**| i-th bit is lower that j-th bit if `i<j`|
+|**Lower bit/**<br> **Higher bit**| i-th bit is lower that j-th bit if `i<j`<br>MSB is highest bit, LSB is the lowest bit|
+
+## NOT
+| Operation | Meaning |
+|-----------|---------|
+|`~x`       | 1's complement of `x`|
+|`~x+1`     | 2's complement of `x`|
+### `-x` in terms of `~x`
+``` {.cpp .numberLines}
+assert(-x == ~x+1);
+```
 
 ## XOR
 ### How to Visualize XOR
