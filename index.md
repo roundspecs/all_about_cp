@@ -30,11 +30,20 @@ cout<<bitset<32>(-1)<<"\n";
 ```
 
 ## Index of Bit
-Bits in a bit string are numbered from right to left, starting with 0.
+Bits in a bit string are indexed from right to left, starting with 0.
 ```
 bit string: 1 0 1 1 0 1
 index:      ... 3 2 1 0
 ```
+In this text, i-th bit means bit with index i.
+
+## Terminologies
+| Terms | Meaning |
+|-------|---------|
+|**Set bit**| Make the bit 1|
+|**Unset/Clear bit**| Make the bit 0|
+|**Flip bit**| Make the bit opposite|
+|**Lower bit/**<br> **Higher bit**| i-th bit is lower that j-th bit if `i<j`|
 
 ## XOR
 ### How to Visualize XOR
@@ -61,12 +70,30 @@ bool xor(bool a, bool b) {
 }
 ```
 
+## Thinking of Bitwise Operators: Fixing one operand
+### AND
+| Operation | Meaning |
+|-----------|---------|
+| $& 1$     | same    |
+| $& 0$     | 0       |
+### OR
+| Operation | Meaning |
+|-----------|---------|
+| $| 1$     | 1       |
+| $| 0$     | same    |
+### XOR
+| Operation   | Meaning |
+|-------------|---------|
+| $\oplus 1$  | flip    |
+| $\oplus 0$  | same    |
+
 ## Visualizing n-1
 When we substract 1 from a number, the rightmost set bit becomes unset and all the bits to its right becomes set
 ```
 n   = xxxx10000
 n-1 = xxxx01111
 ```
+There for value of a binary number with all 1s of length n is $2^n-1$
 
 ## Common Bit Operations and Checks
 ### Parity Check
