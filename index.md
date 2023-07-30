@@ -12,6 +12,14 @@ This book is publicly developed on [GitHub](https://github.com/roundspecs/all_ab
 cin.tie(0)->sync_with_stdio(0);
 ```
 
+# Maths
+## Summation
+### Identities
+- $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
+- $\sum{(f(n)\pm g(n))}=\sum{f(n)}\pm \sum{g(n)}$
+- $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$
+  > [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
+
 # Bit Manipulation
 ## Binary Literal in C++
 You can represent binary numbers in C++ by using the `0b` prefix.\
