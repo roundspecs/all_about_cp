@@ -12,13 +12,42 @@ This book is publicly developed on [GitHub](https://github.com/roundspecs/all_ab
 cin.tie(0)->sync_with_stdio(0);
 ```
 
+# Language
+## Return by reference
+Lets define an array to demonstrate return by reference
+```{.cpp .numberLines}
+int vals[] = {10, 12, 83, 122, 5, 34};
+```
+The following function returns the value of the i-th element
+```{.cpp .numberLines startFrom="5"}
+int getVal(int i) {
+  return vals[i];  
+}
+```
+The following function returns a reference to the i-th element
+```{.cpp .numberLines startFrom="2"}
+int& getRef(int i) {
+  return vals[i];  
+}
+```
+Demonstration:
+```{.cpp .numberLines startFrom="8"}
+int x = getVal(2);
+x++;                   // Doesn't change array
+cout<<getVal(2)<<"\n"; // Output: 83
+int y = getRef(2);
+y++;                   // Changes array
+cout<<getVal(2)<<"\n"; // Output: 84
+```
+**Problem:** [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
+
 # Maths
 ## Summation
 ### Identities
 - $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
 - $\sum{(f(n)\pm g(n))}=\sum{f(n)}\pm \sum{g(n)}$
-- $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$
-  > [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
+- $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
+  **Problem:** [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
 # Bit Manipulation
 ## Binary Literal in C++
@@ -232,5 +261,5 @@ cout << __builtin_popcount(x) << "\n"; // 5
 cout << __builtin_parity(x) << "\n"; // 1
 ```
 While the above functions only support int numbers, there are also long long
-versions of the functions available with the suffix ll.
+versions of the functions available with the suffix ll.\
 Source: [CSES Book](https://cses.fi/book/index.php)
