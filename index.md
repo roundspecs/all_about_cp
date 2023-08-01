@@ -47,6 +47,7 @@ cout<<getVal(2)<<"\n"; // Output: 84
 - $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
 - $\sum{(f(n)\pm g(n))}=\sum{f(n)}\pm \sum{g(n)}$
 - $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
+  Proof of this identity is interesting\
   **Problem:** [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
 # Bit Manipulation
