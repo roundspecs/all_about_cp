@@ -51,11 +51,48 @@ cout<<getVal(2)<<"\n"; // Output: 84
   **Problem:** [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
 # Bit Manipulation
-## Binary Literal in C++
-You can represent binary numbers in C++ by using the `0b` prefix.\
-For example: 13 in binary is `0b1101`.
+## Non-decimal Literal in C++
+| Base | Prefix |
+|------|--------|
+| bin  | 0b     |
+| hex  | 0x     |
+| oct  | 0      |
 ```{.cpp .numberLines}
-assert(13 == 0b1101);
+assert(13 == 0b1101); // binary
+assert(13 == 0xd); // binary
+assert(13 == 015); // binary
+```
+
+## How integers are stored
+Integers are stored as blocks of bytes
+| Data Type | No. of Bytes |
+|-----------|--------------|
+| char      | 1            |
+| short     | 2            |
+| int       | 3            |
+| long long | 4            |
+| int128_t<br>(g++ extension) | 5 |
+
+## I/O with Non-Decimal Numbers
+### Using cin/cout:
+```{.cpp .numberLines}
+int x;
+cin>>hex>>x;
+cout<<hex<<x;
+cin>>oct>>x;
+cout<<oct<<x;
+cin>>dec>>x;
+cout<<dec<<x;
+```
+### Using scanf/prinjf:
+```{.cpp .numberLines}
+int x;
+scanf("%x",&x);
+printf("%x",x);
+scanf("%o",&x);
+printf("%o",x);
+scanf("%d",&x);
+printf("%d",x);
 ```
 
 ## Signed and Unsigned Integers
