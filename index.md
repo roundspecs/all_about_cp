@@ -57,14 +57,16 @@ cout<<getVal(2)<<"\n"; // Output: 84
 | bin  | 0b     |
 | hex  | 0x     |
 | oct  | 0      |
+
 ```{.cpp .numberLines}
-assert(13 == 0b1101); // binary
-assert(13 == 0xd); // binary
-assert(13 == 015); // binary
+assert(13 == 0b1101);
+assert(13 == 0xd);
+assert(13 == 015);
 ```
 
 ## How integers are stored
 Integers are stored as blocks of bytes
+
 | Data Type | No. of Bytes |
 |-----------|--------------|
 | char      | 1            |
@@ -83,16 +85,10 @@ cin>>oct>>x;
 cout<<oct<<x;
 cin>>dec>>x;
 cout<<dec<<x;
-```
-### Using scanf/prinjf:
-```{.cpp .numberLines}
-int x;
-scanf("%x",&x);
-printf("%x",x);
-scanf("%o",&x);
-printf("%o",x);
-scanf("%d",&x);
-printf("%d",x);
+
+bitset<32> b;
+cin>>b;
+cout<<b.to_ulong();
 ```
 
 ## Signed and Unsigned Integers
