@@ -116,23 +116,20 @@ In this text, i-th bit means bit with index i.
 |**Lower bit/**<br> **Higher bit**| i-th bit is lower that j-th bit if `i<j`<br>MSB is highest bit, LSB is the lowest bit|
 
 ## Thinking in Binary
-We are used to thinking of numbers in decimal system. But computers store everything in binary. So, to be good at programming (i.e. talking to computers) we have to learn how to think in binary\
 **Fun fact:** Bit stands for "Binary Digit"
 
 ### Position of bits
-Binary, Octal, Hexadecimal and Decimal are called Positional Number System. That's just a fancy way of saying that the position of the digits in a number matters, unlike Roman Numerals.\
 Every position in a binary number has an index as mentioned [here](#index-of-bit).\
-Each position also has a value: $2^{index}$\
+Each position also has a positional value: $2^{index}$\
 Here is an example:
 ```
 bit string:  0 1 1 0 1
 index:       4 3 2 1 0
 value:      16 8 4 2 1
 ```
-In later sections, we will refer to this index and value multiple times. Since value of a bit depends on the position, we will also refer to it as positional value.
 
 ### Converting to Decimal
-To convert a binary number to decimal, we have to multiplay each bit (0 or 1) with its positional value and then, sum up the products.\
+To find decimal representation, we have to add up the positional values of set bits\
 As an example, lets convert `0b1101` to decimal:
 ```
 bit string: 1 1 0 1
@@ -142,14 +139,19 @@ value:      8 4 2 1
 Therefore, `0b1101` in decimal is -\
 $8\times 1+4\times 1+2\times 0+1\times 1$\
 $=8+4+1$\
-$=13$\
-**Shortcut:** From the example, you can notice that we are just adding up the values of the positions where there is a 1 and ignoring the positions that hold a 0. This is because, 0 times the positional value is, 0. So, we can just ignore those. And, 1 times the positional value is the positional value itself. So, we can just add them up.
+$=13$
 
-### Maximizing numbers
-A common problem among bit manipulation problems is that you will be given a number and the definition of some binary operations you can perform on the number, and you have to maximize the number.\
-To solve this type of problems, you have to understand what *maximizing a number* means.
+### Maximizing/Minimizing bitstrings
+Bit string, `A` is greater than `B` if:
+- Length of binary representation of A is greater than that of B (ignoring leading zeros)
+- If their lenghts are equal, then in the first position where they differ, `A` has `1` and `B` has `0`.
 
-To understand the concept better, think of positional values as *significance* of a bit. Since the 
+This idea is important to solve problems related to maximizing/minimizing number with binary operations
+
+These problems can be reduced to the following pattern:
+You are given a number `n`. Do some bitwise operations on `n` such that `n` is maximized.
+
+The idea behind this pattern of problems is that you have to maximize the length of the bitstring (without leading zeros) and set more significat bits that are unset
 
 ## NOT
 | Operation | Meaning |
