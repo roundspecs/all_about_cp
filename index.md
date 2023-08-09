@@ -350,6 +350,15 @@ Source: [CSES Book](https://cses.fi/book/index.php)
 There are n ranges $[l_1,r_1],[l_2,r_2],[l_3,r_3],...[l_n,r_n]$\
 Now, the intersections of these ranges is $[L,R]$,where\
 $L=max(l_1,l_2,l_3,...,l_n)$\
-$R=min(r_1,r_2,r_3,...,r_n)$\
+$R=min(r_1,r_2,r_3,...,r_n)$
+
 **Edge Case:**\
 If $R<L$ , then the intersection is an empty range.
+
+**Practice:**
+
+- [Problem 1](https://codeforces.com/problemset/problem/1282/A)
+
+- [Problem 2](https://codeforces.com/problemset/problem/124/A)
+
+- [Problem 3](https://codeforces.com/problemset/problem/714/A)
