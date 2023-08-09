@@ -343,4 +343,4 @@ Now, the intersections of these ranges is $[L,R]$,where\
 $L=max(l_1,l_2,l_3,...,l_n)$\
 $R=min(r_1,r_2,r_3,...,r_n)$\
 **Edge Case:**\
-If $R<L$ , then the intersection is an emppty range.
+If $R<L$ , then the intersection is an empty range.
