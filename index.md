@@ -50,6 +50,15 @@ cout<<getVal(2)<<"\n"; // Output: 84
   Proof of this identity is interesting\
   **Problem:** [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
+# String
+## Big Integers
+1. Take input as string
+2. Reverse the string
+
+# From A to B
+[Digital Root](https://codeforces.com/problemset/problem/355/A)\
+Think out of the box: Convert from B to A instead
+
 # Bit Manipulation
 ## Non-decimal Literal in C++
 | Base | Prefix |
