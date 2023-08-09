@@ -334,3 +334,13 @@ cout << __builtin_parity(x) << "\n"; // 1
 While the above functions only support int numbers, there are also long long
 versions of the functions available with the suffix ll.\
 Source: [CSES Book](https://cses.fi/book/index.php)
+
+# Ranges
+## Multiple Ranges 
+### Intersections of ranges    
+There are n ranges $[l_1,r_1],[l_2,r_2],[l_3,r_3],...[l_n,r_n]$\
+Now, the intersections of these ranges is $[L,R]$,where\
+$L=max(l_1,l_2,l_3,...,l_n)$\
+$R=min(r_1,r_2,r_3,...,r_n)$\
+**Edge Case:**\
+If $R<L$ , then the intersection is an emppty range.
