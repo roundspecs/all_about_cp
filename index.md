@@ -208,6 +208,10 @@ bool xor(bool a, bool b) {
 }
 ```
 
+## XOR with AND OR
+`a^b=(a|b)-(a&b)`\
+`a^b=(a|b)&~(a&b)`
+
 ## Thinking of Bitwise Operators: Fixing one operand
 ### AND
 | Operation | Meaning |
@@ -357,8 +361,10 @@ Source: [CSES Book](https://cses.fi/book/index.php)
 
 # Sum with bit operations
 
-$a+b=((a\land b)<<1)+(a\oplus b)$\
+`a+b=((a&b)<<1)+(a^b)`\
 Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be written in terms of and,or\
+`a+b=(a|B)+(a&b)`
+
 Practice: [CF](https://codeforces.com/contest/1556/problem/D)
 
 # Ranges
