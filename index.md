@@ -43,7 +43,8 @@ cout<<getVal(2)<<"\n"; // Output: 84
 
 # Maths
 ## Pairwise Sum
-Given sum of all pair of integers in an array of length $n>3$, find the original array
+Given sum of all pair of integers in an array of length $n>3$, find the original array.\
+Let the array be `[a,b,c,...]`;
 ```
   (a+b)
 + (b+c)
