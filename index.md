@@ -362,3 +362,16 @@ If $R<L$ , then the intersection is an empty range.
 - [Problem 2](https://codeforces.com/problemset/problem/124/A)
 
 - [Problem 3](https://codeforces.com/problemset/problem/714/A)
+
+# Interactive Prpblem
+Make a function called ask that takes the parameters of the question as parameter and returns the return value of the question
+
+Example:
+```{.cpp .numberLines}
+int ask(string s, int a, int b) {
+	cout << s << ' ' << a << ' ' << b << '\n';
+	int res;
+	cin >> res;
+	return res;
+}
+```
