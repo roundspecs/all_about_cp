@@ -42,6 +42,16 @@ cout<<getVal(2)<<"\n"; // Output: 84
 **Problem:** [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
 
 # Maths
+## Pairwise Sum
+Given sum of all pair of integers in an array of length $n>3$, find the original array
+```
+  (a+b)
++ (b+c)
+- (c+a)
+-------
+    2b
+```
+
 ## Summation
 ### Identities
 - $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
