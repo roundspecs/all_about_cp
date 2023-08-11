@@ -355,6 +355,12 @@ While the above functions only support int numbers, there are also long long
 versions of the functions available with the suffix ll.\
 Source: [CSES Book](https://cses.fi/book/index.php)
 
+# Sum with bit operations
+
+$a+b=((a\land b)<<1)+(a\oplus b)$\
+Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be written in terms of and,or\
+Practice: [CF](https://codeforces.com/contest/1556/problem/D)
+
 # Ranges
 ## Multiple Ranges 
 ### Intersections of ranges    
