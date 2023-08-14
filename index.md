@@ -362,3 +362,103 @@ If $R<L$ , then the intersection is an empty range.
 - [Problem 2](https://codeforces.com/problemset/problem/124/A)
 
 - [Problem 3](https://codeforces.com/problemset/problem/714/A)
+
+# Number Theory #
+## Divisibility of Integer N ##
+N can be very large number(containing more than **40** digits).Then, **N should be read as string**. The following properties can be helpfull for those cases.
+
+***N is***\
+1.Always divisible by 1.
+
+2.Dibisible by 2 if the last digit of N is divisible by 2 i.e., last digit is even.
+
+3.Divisible by 3 if sum of digits is divisible by 3.
+
+4.Divisible by 4 if the number containing only the last two digits of N is divisible by 4.
+
+5.Divisible by 5 if last digit is 0 or 5.
+
+6.Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
+
+## Binary Exponentiation ##
+When we need to find $x^n$,\
+![Alt text](image.png)\
+```{.cpp .numberLines}
+#define ll long long
+ll pow(ll x,ll n){//x^n
+    if(n==0)return 1;
+    ll z=modpow(x,n/2);
+    z*=z;
+    if (n&1)return x*z;
+    return z;
+}
+```
+Complexity:$O(logn)$
+
+## Modular Arithmetic ##
+### Basic Modular Operations ###
+**Modular Addition:** (a+b)%m = ((a%m)+(b%m))%m \
+**Modular Multiplication** (aXb)%m= ((a%m) X (b%m))%m
+
+### Modular Exponentiation ###
+**Calculate $x^n$ % m :**\
+Similar to Binary Exponentiation. But every time we need to use the modular multiplication formula.
+```{.cpp .numberLines}
+#define ll long long
+ll modpow(ll x,ll n,ll m){//x^n mod m
+    if(n==0)return 1%m;
+    ll z=modpow(x,n/2,m)%m;
+    z=(z*z)%m
+    if (n&1)return ((x%m)*z)%m;
+    return z;
+}
+```
+Complexity:$O(logn)$
+
+# Regular Expression #
+## Matching Substring ##
+Calculate how many times a certain pattern appears in a string(with duplicates).\
+[**Problem-1:**](https://toph.co/p/nobita-and-shizuka)\
+The pattern starts and ends with 1, and there are one or more 0s in-between. \
+**C++ code:**
+```{.cpp .numberLines}
+#include<bits/stdc++.h>
+#include <regex>
+using namespace std;
+int countSubstrings(const string &s) {
+  regex pattern("(?=(10+1))");
+  sregex_iterator iter(s.begin(), s.end(), pattern);
+  sregex_iterator end;
+  int count = 0;
+  while (iter != end) {
+      ++count;
+      ++iter;
+  }
+  return count;
+}
+```
+**Python Code:**
+```{.py .numberLines}
+def countSubstrings(s):
+  pattern=r'(?=(10+1))'
+  matches=finditer(pattern,s)
+  count=0
+  for match in matches:count+=1
+  return count
+```
+Now, if we want only the unique substrings we can store those substrings in a set.\
+**C++ Code:**
+```{.cpp .numberLines}
+set<string> uniqueSubstrings; 
+while (iter != end){
+  uniqueSubstrings.insert((*iter)[1]);
+  ++iter;
+}
+```
+**Python Code:**
+```{.py .numberLines}
+uniqueSubstrings = set()
+for match in matches:
+  uniqueSubstrings.add(match.group(1))
+```
+*The size of the set **uniqueSubstrings** is the number of unique substrings that matches the pattern.*
