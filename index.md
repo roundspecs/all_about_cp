@@ -1,5 +1,7 @@
 ---
 title: All about CP
+header-includes: |
+  \usepackage{amsmath}
 toc-title: Table of Content
 ---
 
@@ -42,6 +44,17 @@ cout<<getVal(2)<<"\n"; // Output: 84
 **Problem:** [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
 
 # Maths
+## Pairwise Sum
+Given sum of all pair of integers in an array of length $n>3$, find the original array.\
+Let the array be `[a,b,c,...]`;
+```
+  (a+b)
++ (b+c)
+- (c+a)
+-------
+    2b
+```
+
 ## Summation
 ### Identities
 - $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
@@ -197,6 +210,10 @@ bool xor(bool a, bool b) {
 }
 ```
 
+## XOR with AND OR
+`a^b=(a|b)-(a&b)`\
+`a^b=(a|b)&~(a&b)`
+
 ## Thinking of Bitwise Operators: Fixing one operand
 ### AND
 | Operation | Meaning |
@@ -344,6 +361,14 @@ While the above functions only support int numbers, there are also long long
 versions of the functions available with the suffix ll.\
 Source: [CSES Book](https://cses.fi/book/index.php)
 
+## Sum with bit operations ##
+
+`a+b=((a&b)<<1)+(a^b)`\
+Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be written in terms of and,or\
+`a+b=(a|B)+(a&b)`
+
+Practice: [CF](https://codeforces.com/contest/1556/problem/D)
+
 # Ranges
 ## Multiple Ranges 
 ### Intersections of ranges    
@@ -363,6 +388,19 @@ If $R<L$ , then the intersection is an empty range.
 
 - [Problem 3](https://codeforces.com/problemset/problem/714/A)
 
+# Interactive Prpblem
+Make a function called ask that takes the parameters of the question as parameter and returns the return value of the question
+
+Example:
+```{.cpp .numberLines}
+int ask(string s, int a, int b) {
+	cout << s << ' ' << a << ' ' << b << '\n';
+	int res;
+	cin >> res;
+	return res;
+}
+```
+
 # Number Theory #
 ## Divisibility of Integer N ##
 N can be very large number(containing more than **40** digits).Then, **N should be read as string**. The following properties can be helpfull for those cases.
@@ -381,8 +419,20 @@ N can be very large number(containing more than **40** digits).Then, **N should 
 6.Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
 
 ## Binary Exponentiation ##
-When we need to find $x^n$,\
-![Alt text](image.png)\
+$x^n$ can be written as follows:
+$$
+x^n = 
+\left\{
+    \begin{array}{lr}
+        1,&n=0\\
+        \\
+        x^(n/2).x^(n/2),&n\%2=0 \\
+        \\
+        x^(n-1).x,&n\%2=1\\
+    \end{array}
+\right\}
+$$
+**C++ Code:**
 ```{.cpp .numberLines}
 #define ll long long
 ll pow(ll x,ll n){//x^n
@@ -402,7 +452,19 @@ Complexity:$O(logn)$
 
 ### Modular Exponentiation ###
 **Calculate $x^n$ % m :**\
-Similar to Binary Exponentiation. But every time we need to use the modular multiplication formula.
+Just we need to use the modular multiplication formula in *Binary Exponentiation.*
+$$
+x^n\%m=
+\left\{
+    \begin{array}{lr}
+        1\%m,&n=0\\
+        \\
+        ((x^(n/2)\%m).(x^(n/2)\%m))\%m,&n\%2=0 \\
+        \\
+        ((x^(n/2)\%m).(x\%m)\%m),&n\%2=1)\\
+    \end{array}
+\right\}
+$$
 ```{.cpp .numberLines}
 #define ll long long
 ll modpow(ll x,ll n,ll m){//x^n mod m
