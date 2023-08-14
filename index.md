@@ -3,17 +3,31 @@ title: All about CP
 header-includes: |
   \usepackage{amsmath}
 toc-title: Table of Content
+mainfont: NotoSerif-Regular.ttf
+mainfontoptions:
+- BoldFont=NotoSerif-Bold.ttf
+- ItalicFont=NotoSerif-Italic.ttf
+- BoldItalicFont=NotoSerif-BoldItalic.ttf
+monofont: Inconsolata.ttf
+colorlinks: true
+linkcolor: #3498DB
+urlcolor: #3498DB
+toccolor: darkgray
+geometry: b5paper,margin=1in
+output: pdf_document
 ---
-
+\pagebreak
 # Development
 This book is publicly developed on [GitHub](https://github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
 
+\pagebreak
 # FastIO
 ## The Magic Line
-```{.cpp .numberLines}
-cin.tie(0)->sync_with_stdio(0);
-```
+  ```{.cpp .numberLines}
+  cin.tie(0)->sync_with_stdio(0);
+  ```
 
+\pagebreak
 # Language
 ## Return by reference
 Lets define an array to demonstrate return by reference
@@ -43,6 +57,7 @@ cout<<getVal(2)<<"\n"; // Output: 84
 ```
 **Problem:** [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
 
+\pagebreak
 # Maths
 ## Pairwise Sum
 Given sum of all pair of integers in an array of length $n>3$, find the original array.\
@@ -57,12 +72,17 @@ Let the array be `[a,b,c,...]`;
 
 ## Summation
 ### Identities
-- $\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
-- $\sum{(f(n)\pm g(n))}=\sum{f(n)}\pm \sum{g(n)}$
-- $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
+
+$\sum{c\times f(n)}=c\times \sum{f(n)}$, $c$ is constant
+
+$\sum{(f(n)\pm g(n))}=\sum{f(n)}\pm \sum{g(n)}$
+
+$\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
+
   Proof of this identity is interesting\
   **Problem:** [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
+\pagebreak
 # String
 ## Big Integers
 1. Take input as string
@@ -72,6 +92,7 @@ Let the array be `[a,b,c,...]`;
 [Digital Root](https://codeforces.com/problemset/problem/355/A)\
 Think out of the box: Convert from B to A instead
 
+\pagebreak
 # Bit Manipulation
 ## Non-decimal Literal in C++
 | Base | Prefix |
@@ -369,6 +390,7 @@ Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be w
 
 Practice: [CF](https://codeforces.com/contest/1556/problem/D)
 
+\pagebreak
 # Ranges
 ## Multiple Ranges 
 ### Intersections of ranges    
@@ -388,6 +410,7 @@ If $R<L$ , then the intersection is an empty range.
 
 - [Problem 3](https://codeforces.com/problemset/problem/714/A)
 
+\pagebreak
 # Interactive Prpblem
 Make a function called ask that takes the parameters of the question as parameter and returns the return value of the question
 
@@ -401,6 +424,7 @@ int ask(string s, int a, int b) {
 }
 ```
 
+\pagebreak
 # Number Theory #
 ## Divisibility of Integer N ##
 N can be very large number(containing more than **40** digits).Then, **N should be read as string**. The following properties can be helpfull for those cases.
@@ -426,9 +450,9 @@ x^n =
     \begin{array}{lr}
         1,&n=0\\
         \\
-        x^(n/2).x^(n/2),&n\%2=0 \\
+        x^{(n/2)}\cdot x^{(n/2)},&n\%2=0 \\
         \\
-        x^(n-1).x,&n\%2=1\\
+        x^{(n-1)}\cdot x,&n\%2=1\\
     \end{array}
 \right\}
 $$
@@ -448,22 +472,18 @@ Complexity:$O(logn)$
 ## Modular Arithmetic ##
 ### Basic Modular Operations ###
 **Modular Addition:** (a+b)%m = ((a%m)+(b%m))%m \
-**Modular Multiplication** (aXb)%m= ((a%m) X (b%m))%m
+**Modular Multiplication** (a\times b)%m= ((a%m)\times (b%m))%m
 
 ### Modular Exponentiation ###
 **Calculate $x^n$ % m :**\
 Just we need to use the modular multiplication formula in *Binary Exponentiation.*
 $$
-x^n\%m=
-\left\{
-    \begin{array}{lr}
-        1\%m,&n=0\\
-        \\
-        ((x^(n/2)\%m).(x^(n/2)\%m))\%m,&n\%2=0 \\
-        \\
-        ((x^(n/2)\%m).(x\%m)\%m),&n\%2=1)\\
-    \end{array}
-\right\}
+x^n\> \textrm{mod}\> m=
+  \begin{cases}
+      1\> \textrm{mod}\> m,&n=0\\
+      ((x^{n/2} \> \textrm{mod}\> m)\cdot(x^{n/2}\mod{m}))\> \textrm{mod}\> m,&n\> \textrm{mod}\> 2=0 \\
+      ((x^{n/2}\mod{m})\cdot(x\> \textrm{mod}\> m))\> \textrm{mod}\> m,&n\> \textrm{mod}\> 2=1\\
+  \end{cases}
 $$
 ```{.cpp .numberLines}
 #define ll long long
@@ -477,6 +497,7 @@ ll modpow(ll x,ll n,ll m){//x^n mod m
 ```
 Complexity:$O(logn)$
 
+\pagebreak
 # Regular Expression #
 ## Matching Substring ##
 Calculate how many times a certain pattern appears in a string(with duplicates).\
