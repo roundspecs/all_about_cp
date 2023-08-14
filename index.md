@@ -1,5 +1,7 @@
 ---
 title: All about CP
+header-includes: |
+  \usepackage{amsmath}
 toc-title: Table of Content
 ---
 
@@ -398,3 +400,14 @@ int ask(string s, int a, int b) {
 	return res;
 }
 ```
+
+# Testing
+$$
+Y(i,k) = 
+\left\{
+    \begin{array}{lr}
+        ||R_{k}-R_{i}||^{2}, & \text{if } i \neq k\\
+        ||\triangle_{i}||^{2}, & \text{if } i\leq k
+    \end{array}
+\right\}
+$$
