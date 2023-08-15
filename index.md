@@ -37,14 +37,14 @@ Specific to C++:
 # Fast I/O
 ## C++
 This will save you from TLEs in many problems
-```{.cpp}
+```.cpp
 cin.tie(0) -> sync_with_stdio(0);
 ```
 **Caution:** Either use `printf`/`scanf`, or use `cin`/`cout` with fast I/O. But don't use both
 </div>
 
 ## Python
-```{.py . numberLines}
+```.py
 import sys
 input=lambda:sys.stdin.readline().strip()
 ```
