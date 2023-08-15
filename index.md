@@ -500,7 +500,7 @@ If $R<L$ , then the intersection is an empty range.
 - [CF714A - Meeting of Old Friends](https://codeforces.com/problemset/problem/714/A)
 
 \pagebreak
-# Interactive Prpblem
+# Interactive Problem
 Make a function called ask that takes the parameters of the question as parameter and returns the return value of the question
 
 Example:
