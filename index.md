@@ -97,13 +97,7 @@ $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
 
 **Practice:**
 
-- [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
-
-\pagebreak
-# String
-## Big Integers
-1. Take input as string
-2. Reverse the string
+- [AtCoder - ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
 \pagebreak
 # Constructive Algorithm
@@ -482,7 +476,8 @@ a + b = ((a & b) << 1) + (a ^ b)
       = (a & b) + (a | b)
 ```
 
-Practice: 
+Practice:
+
 - [Codeforces - 1556D - Take a guess](https://codeforces.com/contest/1556/problem/D)
 
 \pagebreak
@@ -519,24 +514,6 @@ int ask(string s, int a, int b) {
 ```
 
 \pagebreak
-# Big Integers
-If N is a very large number (containing more than **40** digits), then **N should be read as string**.
-
-## Divisibility of Integer N
-***N is***
-
-1. Always divisible by 1.
-
-2. Dibisible by 2 if the last digit of N is divisible by 2 i.e., last digit is even.
-
-3. Divisible by 3 if sum of digits is divisible by 3.
-
-4. Divisible by 4 if the number containing only the last two digits of N is divisible by 4.
-
-5. Divisible by 5 if last digit is 0 or 5.
-
-6. Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
-
 \pagebreak
 # Number Theory
 ## Binary Exponentiation ##
@@ -589,10 +566,42 @@ ll modPow(ll x, ll n, ll m) {
 ```
 **Complexity:** $O(logn)$
 
+## Big Integers
+If N is a very large number (containing more than **40** digits), then **N should be read as string**.
+
+### Divisibility of Integer N
+***N is***
+
+1. Always divisible by 1.
+
+2. Dibisible by 2 if the last digit of N is divisible by 2 i.e., last digit is even.
+
+3. Divisible by 3 if sum of digits is divisible by 3.
+
+4. Divisible by 4 if the number containing only the last 2 digits of N is divisible by 4.
+
+5. Divisible by 5 if last digit is 0 or 5.
+
+6. Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
+
+7. Divisible by 7 or not, can not be checked efficiently
+
+8. Divisible by 8 if the number containing only the last 3 digits of N is divisible by 8.\
+   **Note:** In general, N is divisible by $2^x$ if the number containing only the last $x$ digits of N is divisible by $2^x$.
+
+9.  Divisible by 9 if sum of digits is divisible by 9.
+
+10. Divisible by 10, if ...you've guessed it.
+
+**In Binary**\
+N is divisible by $2^x$ if least significant x bits are 0
+
+
 \pagebreak
-# Regular Expression #
-## Matching Substring ##
-Calculate how many times a certain pattern appears in a string(with duplicates).\
+# String
+## Regular Expression #
+### Matching Substring ##
+Calculate how many times a certain pattern appears in a string (with duplicates).\
 [**Problem-1:**](https://toph.co/p/nobita-and-shizuka)\
 The pattern starts and ends with 1, and there are one or more 0s in-between. \
 **C++ code:**
