@@ -43,8 +43,9 @@ cin.tie(0) -> sync_with_stdio(0);
 </div>
 
 ## Python
-```py
-# TODO: Insert code here @sorcerer_21
+```{.py . numberLines}
+import sys
+input=lambda:sys.stdin.readline().strip()
 ```
 
 \pagebreak
