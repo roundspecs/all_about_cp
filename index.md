@@ -363,9 +363,10 @@ Source: [CSES Book](https://cses.fi/book/index.php)
 
 ## Sum with bit operations ##
 
-`a+b=((a&b)<<1)+(a^b)`\
-Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be written in terms of and,or\
-`a+b=(a|B)+(a&b)`
+`a+b=((a&b)<<1)+(a^b)=(2*(a&b))+(a^b)`\
+Note: Since, $a\oplus b$ can be written in terms of and,or the sum can also be written in terms of and,or *i.e.*, `a^b=(a|b)-(a&b)`\
+`a+b=(2*(a&b)+(a|b)-(a&b)`\
+`a+b=(a|b)+(a&b)`
 
 Practice: [CF](https://codeforces.com/contest/1556/problem/D)
 
