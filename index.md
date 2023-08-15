@@ -31,6 +31,7 @@ Specific to C++:
 
 - Make sure your code supports C++17 standard
 - Use `ll` instead of `long long`
+- Assume `bits/stdc++.h` is included
 
 \pagebreak
 # Fast I/O
@@ -111,6 +112,47 @@ Think out of the box: Convert from B to A instead
 **Practice:**
 
 - [CF1810 - Candies](https://codeforces.com/problemset/problem/1810/B)
+
+\pagebreak
+# Searching
+## Linear Search
+Linear search sequentially checks each element of a range ^[A range is any sequence of objects that can be accessed through iterators or pointers, such as an array or an instance of some of the STL containers.\
+Source: https://cplusplus.com/reference/algorithm/] until it finds the targeted value
+```cpp
+int linearSearch(int a[], int n, int target) {
+  for(int i=0; i<n; i++)
+    if(a[i]==target)
+      return i;
+  return -1; // alternatively: return n;
+}
+```
+**Worst Case Time Complexity:** $O(n)$
+
+### STL Algorithms with Linear Search
+Let's define an integer vector for demonstration:
+```cpp
+vector<int> v {3, 2, 1, 5, 3, 2, 6};
+```
+
+**find**\
+Returns the first occurance of the target in range
+```cpp
+int i = find(v.begin(), v.end(), 2) - v.begin();
+cout << "First occurance: " << i << '\n';
+
+int j = find(v.rbegin(), v.rend(), 2) - v.begin();
+cout << "Last occurance: " << n-j-1 << '\n';
+```
+
+**count**\
+Returns the number of elements that are equal to the target
+``cpp
+int cnt = count(v.begin(), v.end(), 3); // 2
+```
+## Binary Search
+Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value of chops off the range in half and again looks for the target value in the rest.
+
+## Hash Table
 
 \pagebreak
 # Bit Manipulation
