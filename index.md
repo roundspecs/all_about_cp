@@ -34,12 +34,12 @@ Specific to C++:
 
 \pagebreak
 # Fast I/O
-## CPP
-<div style="border: 1px solid black">
+## C++
+This will save you from TLEs in many problems
 ```{.cpp}
 cin.tie(0) -> sync_with_stdio(0);
 ```
-**Caution:** Either use `printf` and `scanf`, or use `cin` and `cout` with fast I/O. But don't use both
+**Caution:** Either use `printf`/`scanf`, or use `cin`/`cout` with fast I/O. But don't use both
 </div>
 
 ## Python
