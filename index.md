@@ -112,7 +112,7 @@ Think out of the box: Convert from B to A instead
 
 **Practice:**
 
-- [CF1810 - Candies](https://codeforces.com/problemset/problem/1810/B)
+- [Codeforces - 1810 - Candies](https://codeforces.com/problemset/problem/1810/B)
 
 \pagebreak
 # Searching
@@ -482,7 +482,8 @@ a + b = ((a & b) << 1) + (a ^ b)
       = (a & b) + (a | b)
 ```
 
-Practice: [CF](https://codeforces.com/contest/1556/problem/D)
+Practice: 
+- [Codeforces - 1556D - Take a guess](https://codeforces.com/contest/1556/problem/D)
 
 \pagebreak
 # Ranges
@@ -498,9 +499,9 @@ If $R<L$ , then the intersection is an empty range.
 
 **Practice:**
 
-- [CF1282A - Temporarily unavailable](https://codeforces.com/problemset/problem/1282/A)
-- [CF124A - The number of positions](https://codeforces.com/problemset/problem/124/A)
-- [CF714A - Meeting of Old Friends](https://codeforces.com/problemset/problem/714/A)
+- [Codeforces - 1282A - Temporarily unavailable](https://codeforces.com/problemset/problem/1282/A)
+- [Codeforces - 124A - The number of positions](https://codeforces.com/problemset/problem/124/A)
+- [Codeforces - 714A - Meeting of Old Friends](https://codeforces.com/problemset/problem/714/A)
 
 \pagebreak
 # Interactive Problem
