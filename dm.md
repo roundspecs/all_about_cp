@@ -1,6 +1,20 @@
 ---
 title: Discrete Mathematics
 toc-title: Table of Content
+header-includes: |
+  \usepackage{amsmath}
+mainfont: NotoSerif-Regular.ttf
+mainfontoptions:
+- BoldFont=NotoSerif-Bold.ttf
+- ItalicFont=NotoSerif-Italic.ttf
+- BoldItalicFont=NotoSerif-BoldItalic.ttf
+monofont: Inconsolata.ttf
+colorlinks: true
+linkcolor: #3498DB
+urlcolor: #3498DB
+toccolor: darkgray
+geometry: b5paper,margin=1in
+output: pdf_document
 ---
 
 # Proposition

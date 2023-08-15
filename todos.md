@@ -9,3 +9,5 @@
 - Permutation blogs:
   - https://codeforces.com/blog/entry/111187
   - https://codeforces.com/blog/entry/88283
+
+- Lambda function inside other functions
