@@ -147,7 +147,7 @@ cout << "Last occurance: " << n-j-1 << '\n';
 
 **count**\
 Returns the number of elements that are equal to the target
-``cpp
+```cpp
 int cnt = count(v.begin(), v.end(), 3); // 2
 ```
 ## Binary Search
