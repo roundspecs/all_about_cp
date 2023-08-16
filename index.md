@@ -186,7 +186,63 @@ cout << "Minimum value: " << mn << '\n';
 cout << "Maximum value: " << mx << '\n';
 ```
 ## Binary Search
+> *Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky*
+
+> — Donald Knuth
+
 Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value of chops off the range in half and again looks for the target value in the rest.
+
+There are 2 categories of binary search problems:
+
+1. Find exact match
+1. Find smallest/largest solution
+
+### Exact Match
+Examples:
+
+1. Regular binary search\
+   $i: a_i=x$
+1. Find peak/trough\
+   $i: (a_i>a_{i-1}) \land (a_i>a_{i+1})$\
+   $i: (a_i<a_{i-1}) \land (a_i<a_{i+1})$
+
+In each step binary search results in 1 of 3 possible outcomes:
+
+1. its a match!
+1. search in left half
+1. search in right half
+
+All such problems can be simplified into this diagram, where `>` represents 'look right', `<` represents 'look left' and `=` represents 'its a match'.
+```
+|>|>|>|=|<|<|<|<|
+```
+
+### Smallest/Largest Solution
+Examples:
+
+1. Find `lower_bound`: first element greater than or equal to target\
+   $\min i: a_i\geq x$
+1. Find `upper_bound`: first element greater than ~~or equal to~~ target\
+   $\min i: a_i> x$
+1. Find last element less than or equal to target\
+   $\max i: a_i\leq x$\
+   Same as `upper_bound-1`
+1. Find last element less than target\
+   $\max i: a_i<x$\
+   Same as `lower_bound-1`
+
+In each step binary search results in 1 of 2 possible outcomes:
+
+1. search for better solution in left half
+1. search for better solution in right half
+
+All such problems can be simplified into this diagram, where `T` represents True and `F` represents False. And, we have to find the position of last `F` or first `T`
+```
+|F|F|F|F|T|T|T|T|
+```
+
+### Overflow Error
+`mid=(l+r)/2` may cause overflow error. So use `mind=l+(r-l)/2` instead
 
 ## Hash Table
 
