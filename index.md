@@ -22,10 +22,11 @@ output: pdf_document
 # Development
 This book is publicly developed on [GitHub](https://github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
 
-### Contribution {-}
+### Conventions {-}
 - Avoid comments: Name your variables and functions elaborately, instead
 - Set indentation to two spaces
 - Keep it concise
+- Ranges should have inclusive start and exclusive stop: `[start,stop)`
 
 Specific to C++:
 
@@ -37,20 +38,21 @@ Specific to C++:
 # Fast I/O
 ## C++
 This will save you from TLEs in many problems
-```.cpp
+```cpp
 cin.tie(0) -> sync_with_stdio(0);
 ```
 **Caution:** Either use `printf`/`scanf`, or use `cin`/`cout` with fast I/O. But don't use both
 </div>
 
 ## Python
-```.py
+Let's redefine the default input function to save your from TLEs
+```py
 import sys
-input=lambda:sys.stdin.readline().strip()
+input = lambda: sys.stdin.readline().strip()
 ```
 
 \pagebreak
-# Language
+# C++ Specific
 ## Return by reference
 Lets define an array for demonstration:
 ```cpp
@@ -79,9 +81,43 @@ cout << getVal(2) << '\n'; // Output: 84
 ```
 **Practice:**
 
-- [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
+- [Leetcode - 77 - Combinations](https://leetcode.com/problems/combinations/description/)\
+  Solve this without declaring any helper function\
+  **Note:** This problem is not for beginners
 
-## Inner Functions
+## Lambda Functions
+Lambda functions are useful in two cases:
+
+1. When you want a simple function without name\
+   Example: Sorting strings based on length
+   ```cpp
+   string s[] = {"C++", "Python", "Java", "Rust"};
+   sort(s, s+4, [&](string a, string b) -> bool {
+     return a.size()<b.size();
+   });
+   ```
+2. When you want to declare a function inside another function\
+   Example: Notice that the function is declared inside main function
+   ```cpp
+   int main() {
+     string s[] = {"C++", "Python", "Java", "Rust"};
+     function<bool(string,string)> sortByLength = 
+       [&](string a, string b) -> bool {
+         return a.size()<b.size();
+       };
+     sort(s, s+4, sortByLength);
+   }
+   ```
+   Or, shorter
+   ```cpp
+   int main() {
+     string s[] = {"C++", "Python", "Java", "Rust"};
+     auto sortByLength = [&](string a, string b) {
+       return a.size()<b.size();
+     };
+     sort(s, s+4, sortByLength);
+   }
+   ```
 
 \pagebreak
 # Maths
@@ -97,13 +133,7 @@ $\sum_{i=1}^n\sum_{j=1}^n{a_ib_j}=(\sum_{i=1}^n{a_i})(\sum_{j=1}^n{b_j})$\
 
 **Practice:**
 
-- [AtCoder ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
-
-\pagebreak
-# String
-## Big Integers
-1. Take input as string
-2. Reverse the string
+- [AtCoder - ARC A - Simple Math](https://atcoder.jp/contests/arc107/tasks/arc107_a) 
 
 \pagebreak
 # Constructive Algorithm
@@ -112,7 +142,7 @@ Think out of the box: Convert from B to A instead
 
 **Practice:**
 
-- [CF1810 - Candies](https://codeforces.com/problemset/problem/1810/B)
+- [Codeforces - 1810 - Candies](https://codeforces.com/problemset/problem/1810/B)
 
 \pagebreak
 # Searching
@@ -147,11 +177,104 @@ cout << "Last occurance: " << n-j-1 << '\n';
 
 **count**\
 Returns the number of elements that are equal to the target
-``cpp
+```cpp
 int cnt = count(v.begin(), v.end(), 3); // 2
 ```
+
+**min_element, max_element, minmax_element**\
+Code examples:
+```cpp
+auto mn = min_element(v.begin(), v.end());
+cout << "Minimum value: " << *mn << '\n';
+cout << "Index of minimum value: " << mn-v.begin() << '\n';
+```
+```cpp
+auto mx = max_element(v.begin(), v.end());
+cout << "Maximum value: " << *mx << '\n';
+cout << "Index of maximum value: " << mx-v.begin() << '\n';
+```
+```cpp
+auto [mn,mx] = max_element(v.begin(), v.end());
+cout << "Minimum value: " << *mn << '\n';
+cout << "Index of minimum value: " << mn-v.begin() << '\n';
+cout << "Maximum value: " << *mx << '\n';
+cout << "Index of maximum value: " << mx-v.begin() << '\n';
+```
+
+**min, max, minmax**\
+Code examples:
+```cpp
+auto mn = min({3, 2, 1, 5, 3, 2, 6});
+cout << "Minimum value: " << mn << '\n';
+```
+```cpp
+auto mx = max({3, 2, 1, 5, 3, 2, 6});
+cout << "Maximum value: " << mx << '\n';
+```
+```cpp
+auto [mn,mx] = max({3, 2, 1, 5, 3, 2, 6});
+cout << "Minimum value: " << mn << '\n';
+cout << "Maximum value: " << mx << '\n';
+```
 ## Binary Search
+> *Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky*
+
+> — Donald Knuth
+
 Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value of chops off the range in half and again looks for the target value in the rest.
+
+There are 2 categories of binary search problems:
+
+1. Find exact match
+1. Find smallest/largest solution
+
+### Exact Match
+Examples:
+
+1. Regular binary search\
+   $i: a_i=x$
+1. Find peak/trough\
+   $i: (a_i>a_{i-1}) \land (a_i>a_{i+1})$\
+   $i: (a_i<a_{i-1}) \land (a_i<a_{i+1})$
+
+In each step binary search results in 1 of 3 possible outcomes:
+
+1. its a match!
+1. search in left half
+1. search in right half
+
+All such problems can be simplified into this diagram, where `>` represents 'look right', `<` represents 'look left' and `=` represents 'its a match'.
+```
+|>|>|>|=|<|<|<|<|
+```
+
+### Smallest/Largest Solution
+Examples:
+
+1. Find `lower_bound`: first element greater than or equal to target\
+   $\min i: a_i\geq x$
+1. Find `upper_bound`: first element greater than ~~or equal to~~ target\
+   $\min i: a_i> x$
+1. Find last element less than or equal to target\
+   $\max i: a_i\leq x$\
+   Same as `upper_bound-1`
+1. Find last element less than target\
+   $\max i: a_i<x$\
+   Same as `lower_bound-1`
+1. Square root of N
+
+In each step binary search results in 1 of 2 possible outcomes:
+
+1. search for better solution in left half
+1. search for better solution in right half
+
+All such problems can be simplified into this diagram, where `G` represents 'good' and `B` represents 'bad'. And, we have to find the position of last `B` or first `G`
+```
+|B|B|B|B|B|G|G|G|
+```
+
+### Overflow Error
+`mid=(l+r)/2` may cause overflow error. So use `mind=l+(r-l)/2` instead
 
 ## Hash Table
 
@@ -201,9 +324,9 @@ cout << b.to_ulong();
 ## Signed and Unsigned Integers
 Positive integers (both signed and unsigned) are just represented with their binary digits, and negative signed numbers (which can be positive and negative) are usually represented with the Two's complement ^[[cp-algorithms - bit manipulation](https://cp-algorithms.com/algebra/bit-manipulation.html)]
 ```cpp
-cout << bitset<3>(5) << "\n";
+cout << bitset<3>(5) << '\n';
 // Output: 101
-cout << bitset<32>(-1) << "\n";
+cout << bitset<32>(-1) << '\n';
 // Output: 11111111111111111111111111111111
 ```
 
@@ -267,7 +390,7 @@ The idea behind this pattern of problems is that you have to maximize the length
 | `~x`      | 1's complement of `x` |
 | `~x+1`    | 2's complement of `x` |
 ### `-x` in terms of `~x`
-``` cpp
+```cpp
 assert(-x == ~x+1);
 ```
 
@@ -482,7 +605,9 @@ a + b = ((a & b) << 1) + (a ^ b)
       = (a & b) + (a | b)
 ```
 
-Practice: [CF](https://codeforces.com/contest/1556/problem/D)
+Practice:
+
+- [Codeforces - 1556D - Take a guess](https://codeforces.com/contest/1556/problem/D)
 
 \pagebreak
 # Ranges
@@ -498,9 +623,9 @@ If $R<L$ , then the intersection is an empty range.
 
 **Practice:**
 
-- [CF1282A - Temporarily unavailable](https://codeforces.com/problemset/problem/1282/A)
-- [CF124A - The number of positions](https://codeforces.com/problemset/problem/124/A)
-- [CF714A - Meeting of Old Friends](https://codeforces.com/problemset/problem/714/A)
+- [Codeforces - 1282A - Temporarily unavailable](https://codeforces.com/problemset/problem/1282/A)
+- [Codeforces - 124A - The number of positions](https://codeforces.com/problemset/problem/124/A)
+- [Codeforces - 714A - Meeting of Old Friends](https://codeforces.com/problemset/problem/714/A)
 
 \pagebreak
 # Interactive Problem
@@ -518,24 +643,6 @@ int ask(string s, int a, int b) {
 ```
 
 \pagebreak
-# Big Integers
-If N is a very large number (containing more than **40** digits), then **N should be read as string**.
-
-## Divisibility of Integer N
-***N is***
-
-1. Always divisible by 1.
-
-2. Dibisible by 2 if the last digit of N is divisible by 2 i.e., last digit is even.
-
-3. Divisible by 3 if sum of digits is divisible by 3.
-
-4. Divisible by 4 if the number containing only the last two digits of N is divisible by 4.
-
-5. Divisible by 5 if last digit is 0 or 5.
-
-6. Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
-
 \pagebreak
 # Number Theory
 ## Binary Exponentiation ##
@@ -588,10 +695,42 @@ ll modPow(ll x, ll n, ll m) {
 ```
 **Complexity:** $O(logn)$
 
+## Big Integers
+If N is a very large number (containing more than **40** digits), then **N should be read as string**.
+
+### Divisibility of Integer N
+***N is***
+
+1. Always divisible by 1.
+
+2. Dibisible by 2 if the last digit of N is divisible by 2 i.e., last digit is even.
+
+3. Divisible by 3 if sum of digits is divisible by 3.
+
+4. Divisible by 4 if the number containing only the last 2 digits of N is divisible by 4.
+
+5. Divisible by 5 if last digit is 0 or 5.
+
+6. Divisible by 6 if it is divisible by both 2 and three i.e.,last digit is even and the sum of all digits is divisible by 3.
+
+7. Divisible by 7 or not, can not be checked efficiently
+
+8. Divisible by 8 if the number containing only the last 3 digits of N is divisible by 8.\
+   **Note:** In general, N is divisible by $2^x$ if the number containing only the last $x$ digits of N is divisible by $2^x$.
+
+9.  Divisible by 9 if sum of digits is divisible by 9.
+
+10. Divisible by 10, if ...you've guessed it.
+
+**In Binary**\
+N is divisible by $2^x$ if least significant x bits are 0
+
+
 \pagebreak
-# Regular Expression #
-## Matching Substring ##
-Calculate how many times a certain pattern appears in a string(with duplicates).\
+# String
+## Regular Expression #
+### Matching Substring ##
+Calculate how many times a certain pattern appears in a string (with duplicates).\
 [**Problem-1:**](https://toph.co/p/nobita-and-shizuka)\
 The pattern starts and ends with 1, and there are one or more 0s in-between. \
 **C++ code:**
