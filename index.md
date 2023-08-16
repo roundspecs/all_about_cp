@@ -247,6 +247,17 @@ All such problems can be simplified into this diagram, where `>` represents 'loo
 ```
 |>|>|>|=|<|<|<|<|
 ```
+The code for such problems is pretty straightforward
+```cpp
+int l=0, r=n;
+while(l<r) {
+  int m=l+(r-l)/2;
+  if(match) l=r=m;
+  else if(look_right) l=m+1;
+  else r=mid-1;
+}
+```
+
 
 ### Smallest/Largest Solution
 Examples:
@@ -263,18 +274,46 @@ Examples:
    Same as `lower_bound-1`
 1. Square root of N
 
-For this category of problems, in each step there can be 1 of 2 possible outcomes:
+For this category of problems, in each step there can be 1 of 3 possible outcomes:
 
 1. Search for better solution in left half
 1. Search for better solution in right half
+1. There are no better solutions
 
 All such problems can be simplified into this diagram, where `G` represents 'good' and `B` represents 'bad'. And, we have to find the position of last `B` or first `G`
 ```
 |B|B|B|B|B|G|G|G|
 ```
+Notice that the last `B` is always just before the first `G`\
+So, if we only learn the algorithm for finding the index of first `G`, then, we can substract 1 from it to find the index of last `B`
+
+At this point you should be able to write a function(call it `good`), that takes the index as parameter and returns `true` for good and `false` otherwise.
+
+For example, the `good` function of `lower_bound` is as follows:
+```cpp
+auto good = [&](int i) {
+  return a[i] >= target; // target is defined outside function
+}
+```
+Then you can memorize the code for finding the first `G`
+```cpp
+int firstGood(int l, int r, function<bool(int)> good) {
+  while(l < r) {
+    int m = l + (r - l) / 2;
+    if(good(m)) r = m;
+    else l = m + 1;
+  }
+  return l;
+}
+```
 
 ### Overflow Error
-`mid=(l+r)/2` may cause overflow error. So use `mind=l+(r-l)/2` instead
+`m=(l+r)/2` may cause overflow error. So use `m=l+(r-l)/2` instead
+
+### Characteristics of Binary Search Problems
+If any of the following is true for a problem, then it is probably a binary search problem:
+
+1. You will be given an array, and some queries on the array
 
 ## Hash Table
 
