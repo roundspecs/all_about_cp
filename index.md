@@ -22,10 +22,11 @@ output: pdf_document
 # Development
 This book is publicly developed on [GitHub](https://github.com/roundspecs/all_about_cp). If you find anything confusing, or you think that there is a better way to express the idea, please make a pull request.
 
-### Contribution {-}
+### Conventions {-}
 - Avoid comments: Name your variables and functions elaborately, instead
 - Set indentation to two spaces
 - Keep it concise
+- Ranges should have inclusive start and exclusive stop: `[start,stop)`
 
 Specific to C++:
 
@@ -37,16 +38,17 @@ Specific to C++:
 # Fast I/O
 ## C++
 This will save you from TLEs in many problems
-```.cpp
+```cpp
 cin.tie(0) -> sync_with_stdio(0);
 ```
 **Caution:** Either use `printf`/`scanf`, or use `cin`/`cout` with fast I/O. But don't use both
 </div>
 
 ## Python
-```.py
+Let's redefine the default input function to save your from TLEs
+```py
 import sys
-input=lambda:sys.stdin.readline().strip()
+input = lambda: sys.stdin.readline().strip()
 ```
 
 \pagebreak
@@ -79,9 +81,12 @@ cout << getVal(2) << '\n'; // Output: 84
 ```
 **Practice:**
 
-- [This code](https://leetcode.com/problems/combinations/submissions/1009238953/) causes TLE, but [this](https://leetcode.com/problems/combinations/submissions/1009256283/) gets AC
+- [Leetcode - 77 - Combinations](https://leetcode.com/problems/combinations/description/)\
+  Solve this without declaring any helper function\
+  **Note:** This problem is not for beginners
 
 ## Inner Functions
+**TODO: Complete this section**
 
 \pagebreak
 # Maths
@@ -144,6 +149,42 @@ Returns the number of elements that are equal to the target
 ```cpp
 int cnt = count(v.begin(), v.end(), 3); // 2
 ```
+
+**min_element, max_element, minmax_element**\
+Code examples:
+```cpp
+auto mn = min_element(v.begin(), v.end());
+cout << "Minimum value: " << *mn << '\n';
+cout << "Index of minimum value: " << mn-v.begin() << '\n';
+```
+```cpp
+auto mx = max_element(v.begin(), v.end());
+cout << "Maximum value: " << *mx << '\n';
+cout << "Index of maximum value: " << mx-v.begin() << '\n';
+```
+```cpp
+auto [mn,mx] = max_element(v.begin(), v.end());
+cout << "Minimum value: " << *mn << '\n';
+cout << "Index of minimum value: " << mn-v.begin() << '\n';
+cout << "Maximum value: " << *mx << '\n';
+cout << "Index of maximum value: " << mx-v.begin() << '\n';
+```
+
+**min, max, minmax**\
+Code examples:
+```cpp
+auto mn = min({3, 2, 1, 5, 3, 2, 6});
+cout << "Minimum value: " << mn << '\n';
+```
+```cpp
+auto mx = max({3, 2, 1, 5, 3, 2, 6});
+cout << "Maximum value: " << mx << '\n';
+```
+```cpp
+auto [mn,mx] = max({3, 2, 1, 5, 3, 2, 6});
+cout << "Minimum value: " << mn << '\n';
+cout << "Maximum value: " << mx << '\n';
+```
 ## Binary Search
 Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value of chops off the range in half and again looks for the target value in the rest.
 
@@ -195,9 +236,9 @@ cout << b.to_ulong();
 ## Signed and Unsigned Integers
 Positive integers (both signed and unsigned) are just represented with their binary digits, and negative signed numbers (which can be positive and negative) are usually represented with the Two's complement ^[[cp-algorithms - bit manipulation](https://cp-algorithms.com/algebra/bit-manipulation.html)]
 ```cpp
-cout << bitset<3>(5) << "\n";
+cout << bitset<3>(5) << '\n';
 // Output: 101
-cout << bitset<32>(-1) << "\n";
+cout << bitset<32>(-1) << '\n';
 // Output: 11111111111111111111111111111111
 ```
 
@@ -261,7 +302,7 @@ The idea behind this pattern of problems is that you have to maximize the length
 | `~x`      | 1's complement of `x` |
 | `~x+1`    | 2's complement of `x` |
 ### `-x` in terms of `~x`
-``` cpp
+```cpp
 assert(-x == ~x+1);
 ```
 
