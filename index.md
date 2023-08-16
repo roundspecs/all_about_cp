@@ -86,7 +86,7 @@ cout << getVal(2) << '\n'; // Output: 84
   **Note:** This problem is not for beginners
 
 ## Lambda Functions
-Lambda functions are useful int two cases:
+Lambda functions are useful in two cases:
 
 1. When you want a simple function without name\
    Example: Sorting strings based on length
