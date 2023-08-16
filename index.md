@@ -219,9 +219,9 @@ cout << "Maximum value: " << mx << '\n';
 ## Binary Search
 > *Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky*
 
-> — Donald Knuth
+>> —  Donald Knuth
 
-Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value of chops off the range in half and again looks for the target value in the rest.
+Binary search compares the target value with the middle value of *sorted* range, and based on the comparison, it either finds the target value or chops off the range in half and again looks for the target value in the rest.
 
 There are 2 categories of binary search problems:
 
@@ -237,11 +237,11 @@ Examples:
    $i: (a_i>a_{i-1}) \land (a_i>a_{i+1})$\
    $i: (a_i<a_{i-1}) \land (a_i<a_{i+1})$
 
-In each step binary search results in 1 of 3 possible outcomes:
+For this category of problems, in each step there can be 1 of 3 possible outcomes:
 
-1. its a match!
-1. search in left half
-1. search in right half
+1. Its a match!
+1. Search in left half
+1. Search in right half
 
 All such problems can be simplified into this diagram, where `>` represents 'look right', `<` represents 'look left' and `=` represents 'its a match'.
 ```
@@ -263,10 +263,10 @@ Examples:
    Same as `lower_bound-1`
 1. Square root of N
 
-In each step binary search results in 1 of 2 possible outcomes:
+For this category of problems, in each step there can be 1 of 2 possible outcomes:
 
-1. search for better solution in left half
-1. search for better solution in right half
+1. Search for better solution in left half
+1. Search for better solution in right half
 
 All such problems can be simplified into this diagram, where `G` represents 'good' and `B` represents 'bad'. And, we have to find the position of last `B` or first `G`
 ```
