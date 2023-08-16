@@ -52,7 +52,7 @@ input = lambda: sys.stdin.readline().strip()
 ```
 
 \pagebreak
-# Language
+# C++ Specific
 ## Return by reference
 Lets define an array for demonstration:
 ```cpp
@@ -85,8 +85,39 @@ cout << getVal(2) << '\n'; // Output: 84
   Solve this without declaring any helper function\
   **Note:** This problem is not for beginners
 
-## Inner Functions
-**TODO: Complete this section**
+## Lambda Functions
+Lambda functions are useful int two cases:
+
+1. When you want a simple function without name\
+   Example: Sorting strings based on length
+   ```cpp
+   string s[] = {"C++", "Python", "Java", "Rust"};
+   sort(s, s+4, [&](string a, string b) -> bool {
+     return a.size()<b.size();
+   });
+   ```
+2. When you want to declare a function inside another function\
+   Example: Notice that the function is declared inside main function
+   ```cpp
+   int main() {
+     string s[] = {"C++", "Python", "Java", "Rust"};
+     function<bool(string,string)> sortByLength = 
+       [&](string a, string b) -> bool {
+         return a.size()<b.size();
+       };
+     sort(s, s+4, sortByLength);
+   }
+   ```
+   Or, shorter
+   ```cpp
+   int main() {
+     string s[] = {"C++", "Python", "Java", "Rust"};
+     auto sortByLength = [&](string a, string b) {
+       return a.size()<b.size();
+     };
+     sort(s, s+4, sortByLength);
+   }
+   ```
 
 \pagebreak
 # Maths
@@ -230,15 +261,16 @@ Examples:
 1. Find last element less than target\
    $\max i: a_i<x$\
    Same as `lower_bound-1`
+1. Square root of N
 
 In each step binary search results in 1 of 2 possible outcomes:
 
 1. search for better solution in left half
 1. search for better solution in right half
 
-All such problems can be simplified into this diagram, where `T` represents True and `F` represents False. And, we have to find the position of last `F` or first `T`
+All such problems can be simplified into this diagram, where `G` represents 'good' and `B` represents 'bad'. And, we have to find the position of last `B` or first `G`
 ```
-|F|F|F|F|T|T|T|T|
+|B|B|B|B|B|G|G|G|
 ```
 
 ### Overflow Error
