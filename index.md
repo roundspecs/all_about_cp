@@ -250,14 +250,13 @@ All such problems can be simplified into this diagram, where `>` represents 'loo
 The code for such problems is pretty straightforward
 ```cpp
 int l=0, r=n;
-while(l<r) {
-  int m=l+(r-l)/2;
-  if(match) l=r=m;
-  else if(look_right) l=m+1;
-  else r=mid-1;
+while(l < r) {
+  int m = l + (r - l) / 2;
+  if(match) l = r = m;
+  else if(look_right) l = m + 1;
+  else r = mid;
 }
 ```
-
 
 ### Smallest/Largest Solution
 Examples:
@@ -306,9 +305,10 @@ int firstGood(int l, int r, function<bool(int)> good) {
   return l;
 }
 ```
+Caution:
 
-### Overflow Error
-`m=(l+r)/2` may cause overflow error. So use `m=l+(r-l)/2` instead
+1. Pick `l,r` in such that, There is a good in `[l,r)` or, all are bad.
+2. Don't use `m=(r+l)/2` to avoid errors for overflow and negative bounds
 
 ### Characteristics of Binary Search Problems
 If any of the following is true for a problem, then it is probably a binary search problem:
