@@ -11,3 +11,6 @@
   - https://codeforces.com/blog/entry/88283
 
 - Lambda function inside other functions
+
+- Sorting
+  - is_sorted
